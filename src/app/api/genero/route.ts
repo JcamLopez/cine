@@ -1,7 +1,7 @@
-import { NextResponse } from 'next/server'
+ import { NextResponse } from 'next/server'
 
 import { generoSchema } from '@/schemas/generoSchema';
-import { insertarGenero } from '@/services/backend/genero';
+import { insertarGenero } from '@/services/backend/generoServices';
 
 export async function POST(req: Request) {
     try {
