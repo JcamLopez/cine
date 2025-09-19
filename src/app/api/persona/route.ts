@@ -5,10 +5,11 @@ import { NextResponse } from 'next/server'
 export async function POST(req: Request) {
     try {
         const body = await req.json();
+        console.log(body)
         console.log("body")
         console.log(body)
         const parsed = personaSchema.safeParse(body);
-        console.log("paseado")
+        console.log("wwwwwwwwwwwwwwwwwwwwwwwwwww")
         console.log(parsed)
         if (!parsed.success) {
             return NextResponse.json(
