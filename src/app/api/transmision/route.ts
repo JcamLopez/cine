@@ -1,10 +1,10 @@
  import { NextResponse } from 'next/server'
-import {peliculaSchema } from '@/schemas/peliculaSchema'
-import {registroPelicula} from '@/services/backend/peliculaServices'
+import  {transmisionSchema} from '@/schemas/transmisionSchema'
+import {registroTransmision} from '@/services/backend/transmisionServices'
 export async function POST(req: Request) {
     try {
         const body = await req.json();
-        const parsed = peliculaSchema.safeParse(body);
+        const parsed = transmisionSchema.safeParse(body);
 
         if (!parsed.success) {
             return NextResponse.json(
@@ -13,14 +13,14 @@ export async function POST(req: Request) {
             );
         }
 
-        const resultado = await registroPelicula(parsed.data)
+        const resultado = await registroTransmision(parsed.data)
 
         return NextResponse.json(
-            { mensaje: "Película registrada."},
+            { mensaje: "Transmisión registrada."},
             { status: 201 }
         );
     } catch (error) {
-        console.error('Error en POST /genero:', error);
+        console.error('Error en POST /transmision:', error);
         return NextResponse.json(
             { error: 'Error interno del servidor' },
             { status: 500 }
