@@ -9,7 +9,11 @@ export async function POST(req: Request) {
         console.log("body")
         console.log(body)
         const parsed = personaSchema.safeParse(body);
+<<<<<<< HEAD
         console.log("wwwwwwwwwwwwwwwwwwwwwwwwwww")
+=======
+        console.log("----------------------------------------")
+>>>>>>> 5b8c94fd53faa1bee189966ad9aca65422cefc28
         console.log(parsed)
         if (!parsed.success) {
             return NextResponse.json(
