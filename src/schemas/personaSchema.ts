@@ -7,6 +7,7 @@ export const personaSchema = z.object({
     nombre: string().min(1, { message: 'Debe ingresar el genero' }),
     apellido: string().min(1, { message: 'Debe ingresar el genero' }),
     telefono: string().min(1, { message: 'Debe ingresar el genero' }),
+   ubicacion: string().min(1, { message: 'Debe ingresar el genero' }),
 
 });
 

@@ -27,12 +27,12 @@ export async function registroPersona(data: personaPayload) {
 
 
 export async function persona(data: personaPayload, id: number, connection: PoolConnection) {
-    console.log("iddddddd")
-    console.log(id)
+
     await connection.execute(
-        'INSERT INTO PERSONA (DOCUMENTO,FK_TELEFONO, NOMBRE_COMPLETO, APELLIDOS) VALUES (?,?,?,?)',
+        'INSERT INTO PERSONA (DOCUMENTO, FK_UBICACION, FK_TELEFONO, NOMBRE_COMPLETO, APELLIDOS) VALUES (?,?,?,?,?)',
         [
             data.documento,
+            data.ubicacion,
             id,
             data.nombre,
             data.apellido
