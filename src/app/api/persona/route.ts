@@ -1,29 +1,28 @@
- import { NextResponse } from 'next/server'
 
-import { generoSchema } from '@/schemas/generoSchema';
-import { insertarGenero } from '@/services/backend/generoServices';
-
+import { registroPersona } from '@/services/backend/personaServices';
+import { personaSchema } from '@/schemas/personaSchema'
+import { NextResponse } from 'next/server'
 export async function POST(req: Request) {
     try {
         const body = await req.json();
-        const parsed = generoSchema.safeParse(body);
-
+        console.log("body")
+        console.log(body)
+        const parsed = personaSchema.safeParse(body);
+        console.log("paseado")
+        console.log(parsed)
         if (!parsed.success) {
             return NextResponse.json(
                 { error: 'Datos inválidos', detalles: parsed.error.format() },
                 { status: 400 }
             );
         }
-
-        const { genero } = parsed.data;
-        const resultado = await insertarGenero(genero);
-
+        registroPersona(parsed.data)
         return NextResponse.json(
-            { mensaje: resultado.mensaje, id: resultado.idInsertado },
+            { mensaje: "Persona registrada correctamente" },
             { status: 201 }
         );
     } catch (error) {
-        console.error('Error en POST /genero:', error);
+        console.error('Error en POST /persona:', error);
         return NextResponse.json(
             { error: 'Error interno del servidor' },
             { status: 500 }
